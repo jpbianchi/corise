@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: Project1
+    description: No idea
+    columns:
+      - name: name
+        tests:
+          - not_null
+      - name: height
+        tests:
+          - positive_values
+      - name: weight
+        tests:
+          - positive_values

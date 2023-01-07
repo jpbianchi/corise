@@ -1,0 +1,114 @@
+
+
+============================== 2023-01-06 12:19:47.931806 | 6287c3c4-b2ac-4789-b0df-8017dd9c4fdd ==============================
+[0m12:19:47.931822 [info ] [MainThread]: Running with dbt=1.3.2
+[0m12:19:47.932629 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/gitpod/.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_name': 'greenery', 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m12:19:47.932965 [debug] [MainThread]: Tracking: tracking
+[0m12:19:47.935705 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdaba4b6fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdaba4b6f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdaba451040>]}
+[0m12:19:47.936190 [info ] [MainThread]: Creating dbt configuration folder at /home/gitpod/.dbt
+[0m12:19:47.937574 [debug] [MainThread]: Starter project path: /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/include/starter_project
+[0m12:22:38.491273 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdabc44e1f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdab3f7d4c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fdab3f7d250>]}
+[0m12:22:38.492062 [debug] [MainThread]: Flushing usage events
+[0m12:22:38.853972 [error] [MainThread]: Encountered an error:
+
+[0m12:22:38.855576 [error] [MainThread]: Traceback (most recent call last):
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 135, in main
+    results, succeeded = handle_and_check(args)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 198, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 245, in run_from_args
+    results = task.run()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 332, in run
+    self.create_profile_from_target(adapter, profile_name=project_name)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 207, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 191, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 157, in generate_target_from_input
+    target[key] = click.prompt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/click/termui.py", line 166, in prompt
+    value = prompt_func(prompt)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/click/termui.py", line 149, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+
+
+============================== 2023-01-06 12:22:44.222337 | 62e015c6-bf97-40e8-a6df-8b6eee4de529 ==============================
+[0m12:22:44.222354 [info ] [MainThread]: Running with dbt=1.3.2
+[0m12:22:44.223276 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/gitpod/.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_name': 'greenery', 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m12:22:44.223685 [debug] [MainThread]: Tracking: tracking
+[0m12:22:44.226663 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c2332f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c2332fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c22cb070>]}
+[0m12:22:44.227883 [info ] [MainThread]: A project called greenery already exists here.
+[0m12:22:44.228561 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c2332fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c22cb190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd7c22cb220>]}
+[0m12:22:44.228889 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2023-01-06 12:25:13.047541 | 4feca3a9-4436-49df-b5e7-bb59db9e5534 ==============================
+[0m12:25:13.047559 [info ] [MainThread]: Running with dbt=1.3.2
+[0m12:25:13.048314 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/gitpod/.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_name': 'greenery', 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m12:25:13.048698 [debug] [MainThread]: Tracking: tracking
+[0m12:25:13.051687 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f849af3fee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f849af3ffa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f849af3fe80>]}
+[0m12:25:13.052796 [debug] [MainThread]: Starter project path: /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/include/starter_project
+[0m12:25:29.636748 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f84939d8040>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f84939d8100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f84939d8190>]}
+[0m12:25:29.637466 [debug] [MainThread]: Flushing usage events
+[0m12:25:30.000911 [error] [MainThread]: Encountered an error:
+
+[0m12:25:30.003241 [error] [MainThread]: Traceback (most recent call last):
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 135, in main
+    results, succeeded = handle_and_check(args)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 198, in handle_and_check
+    task, res = run_from_args(parsed)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/main.py", line 245, in run_from_args
+    results = task.run()
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 332, in run
+    self.create_profile_from_target(adapter, profile_name=project_name)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 207, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 191, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/task/init.py", line 157, in generate_target_from_input
+    target[key] = click.prompt(
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/click/termui.py", line 166, in prompt
+    value = prompt_func(prompt)
+  File "/workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/click/termui.py", line 149, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+
+
+============================== 2023-01-06 12:25:35.820428 | 3fdad1c1-db48-41b3-b31e-dd7415738914 ==============================
+[0m12:25:35.820445 [info ] [MainThread]: Running with dbt=1.3.2
+[0m12:25:35.821361 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/gitpod/.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_name': 'greenery', 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m12:25:35.821779 [debug] [MainThread]: Tracking: tracking
+[0m12:25:35.824695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57d48f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57d48fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57ce2070>]}
+[0m12:25:35.825795 [info ] [MainThread]: A project called greenery already exists here.
+[0m12:25:35.826369 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57d48fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57ce2190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7efe57ce2220>]}
+[0m12:25:35.826708 [debug] [MainThread]: Flushing usage events
+
+
+============================== 2023-01-06 12:26:24.572424 | ea22e93e-66f6-4067-a06b-fb012bd723ca ==============================
+[0m12:26:24.572437 [info ] [MainThread]: Running with dbt=1.3.2
+[0m12:26:24.573116 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/home/gitpod/.dbt', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'cache_selected_only': False, 'project_name': 'greenery', 'skip_profile_setup': False, 'which': 'init', 'indirect_selection': 'eager'}
+[0m12:26:24.573392 [debug] [MainThread]: Tracking: tracking
+[0m12:26:24.576148 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad740f4fa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad740f4f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad7408e040>]}
+[0m12:26:24.577891 [debug] [MainThread]: Starter project path: /workspace/.pyenv_mirror/user/current/lib/python3.8/site-packages/dbt/include/starter_project
+[0m12:28:05.212818 [info ] [MainThread]: Profile greenery written to /home/gitpod/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m12:28:05.213562 [info ] [MainThread]: 
+Your new dbt project "greenery" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:28:05.214261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad7408e190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad7408e280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fad6cb95160>]}
+[0m12:28:05.214675 [debug] [MainThread]: Flushing usage events

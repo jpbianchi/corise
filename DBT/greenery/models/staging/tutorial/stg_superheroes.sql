@@ -2,7 +2,7 @@
   config(
     materialized='table'
   )
-}}
+}}  -- without this config block, it's a view
 
 SELECT 
     id AS superhero_id,

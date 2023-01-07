@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+greenery_fresh/
+
 # C extensions
 *.so
 

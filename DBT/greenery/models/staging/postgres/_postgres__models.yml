@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: events
+  - name: stg_postgres_events
   - name: stg_postgres_addresses
-  - name: users
-  - name: orders
-  - name: order_items
-  - name: promos
-  - name: products
+  - name: stg_postgres_users
+  - name: stg_postgres_orders
+  - name: stg_postgres_order_items
+  - name: stg_postgres_promos
+  - name: stg_postgres_products

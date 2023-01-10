@@ -11,13 +11,12 @@ orders_counts as (
 
     from (
         select 
-            address_id
-            ,user_id
+            user_id
             ,count(distinct order_id) as orders_cnts
 
         from {{ source('postgres', 'orders') }}
         -- where address_id = '02331e89-1736-4f12-85b9-ddd62545214b'  -- test
-        group by address_id
+        group by user_id
     )
 )
 
@@ -26,7 +25,7 @@ orders_counts as (
         (avg(datediff('min', created_at, delivered_at)) / 60)::decimal(5,2) as avg_delivery_time_hr 
 
     from {{ source('postgres', 'orders') }}
-    where STATUS = 'delivered'  -- some delivery times are missing
+    where STATUS = 'delivered'  -- some delivery times are missing because it's not delivered yet
 )
 
 
@@ -51,7 +50,6 @@ orders_counts as (
         from {{ source('postgres', 'orders') }})
 )
 
-
 ,sessions_hr as (
     select
         avg(sessions_hour) as avg_sessions_hr
@@ -66,11 +64,11 @@ orders_counts as (
 )
 
 select 
-    nb_users                -- 136
-    ,cnts1                  -- 24
-    ,cnts2                  -- 46
-    ,cnts3                  -- 37
-    ,total_orders           -- 136
+    nb_users                -- 124
+    ,cnts1                  -- 25
+    ,cnts2                  -- 28
+    ,cnts3                  -- 34
+    ,total_orders           -- 124
     ,avg_orders_hr          -- 7.52
     ,avg_orders_hr2         -- 8.62  <<< WHY is it different ? 
     ,avg_delivery_time_hr   -- 93.4

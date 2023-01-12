@@ -1,10 +1,16 @@
 
 with
 
-orders_counts as (
+users_cnt as (
     select 
-        count(user_id) as nb_users
-        ,sum((orders_cnts = 1)::int) as cnts1
+        count(distinct user_id) as nb_users
+
+    from {{ source('postgres', 'users') }}
+)
+
+,orders_counts as (
+    select 
+        sum((orders_cnts = 1)::int) as cnts1
         ,sum((orders_cnts = 2)::int) as cnts2
         ,sum((orders_cnts = 3)::int) as cnts3
         ,sum((orders_cnts > 0)::int) as total_orders
@@ -64,7 +70,7 @@ orders_counts as (
 )
 
 select 
-    nb_users                -- 124
+    nb_users                -- 130
     ,cnts1                  -- 25
     ,cnts2                  -- 28
     ,cnts3                  -- 34
@@ -74,5 +80,5 @@ select
     ,avg_delivery_time_hr   -- 93.4
     ,avg_sessions_hr        -- 16.33
     
-from orders_counts, delivery_times, orders_hr, orders_hr2, sessions_hr
+from users_cnt, orders_counts, delivery_times, orders_hr, orders_hr2, sessions_hr
 

@@ -46,16 +46,6 @@ users_cnt as (
         group by date_trunc('hour', created_at) )    -- removes mins and seconds
 )
 
-,orders_hr2 as (
-    select 
-        avg(orders_hr) as avg_orders_hr2  -- 8.62
-
-    from 
-        (select 
-            count(distinct order_id) over (partition by date_trunc('hour', created_at)) as orders_hr
-        from {{ source('postgres', 'orders') }})
-)
-
 ,sessions_hr as (
     select
         avg(sessions_hour) as avg_sessions_hr
@@ -76,9 +66,8 @@ select
     ,cnts3                  -- 34
     ,total_orders           -- 124
     ,avg_orders_hr          -- 7.52
-    ,avg_orders_hr2         -- 8.62  <<< WHY is it different ? 
     ,avg_delivery_time_hr   -- 93.4
     ,avg_sessions_hr        -- 16.33
     
-from users_cnt, orders_counts, delivery_times, orders_hr, orders_hr2, sessions_hr
+from users_cnt, orders_counts, delivery_times, orders_hr, sessions_hr
 

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: core_dim_products
+    description: "Model that displays all information on products"
+    columns:
+      - name: product_id
+        description: "The primary key for this table"
+        tests:
+          - not_null
+      - name: product_name
+        description: "Name of the product"
+      - name: product_price
+        description: "Price of the product"
+        tests:
+          - not_null
+      - name: promo_description
+        description: "Whether the product had a promo description"
+  
+  - name: core_dim_users
+    description: "Model that displays all information about users"
+    columns:
+      - name: user_id
+      - name: first_name
+      - name: last_name
+        tests:
+          - not_null
+      - name: email
+        tests:
+          - unique
+      - name: phone_number
+        tests:
+          - unique
+      - name: created_at
+      - name: address
+        tests:
+          - not_null
+      - name: zipcode
+        tests:
+          - not_null
+      - name: state
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null

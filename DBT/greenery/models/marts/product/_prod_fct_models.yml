@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: prod_fct_orders
+    description: "Model that gives the nb of orders per product, per day"
+
+
+  - name: prod_fct_page_views
+    description: "Model that gives the nb of page views per product, per day"

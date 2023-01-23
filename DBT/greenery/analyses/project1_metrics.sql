@@ -5,7 +5,7 @@ users_cnt as (
     select 
         count(distinct user_id) as nb_users
 
-    from {{ source('postgres', 'users') }}
+    from {{ ref("stg_postgres_users") }}
 )
 
 ,orders_counts as (
@@ -20,7 +20,7 @@ users_cnt as (
             user_id
             ,count(distinct order_id) as orders_cnts
 
-        from {{ source('postgres', 'orders') }}
+        from {{ ref("stg_postgres_orders") }}
         -- where address_id = '02331e89-1736-4f12-85b9-ddd62545214b'  -- test
         group by user_id
     )
@@ -30,7 +30,7 @@ users_cnt as (
     select 
         (avg(datediff('min', created_at, delivered_at)) / 60)::decimal(5,2) as avg_delivery_time_hr 
 
-    from {{ source('postgres', 'orders') }}
+    from {{ ref("stg_postgres_orders") }}
     where STATUS = 'delivered'  -- some delivery times are missing because it's not delivered yet
 )
 
@@ -42,7 +42,7 @@ users_cnt as (
     from 
         (select 
             count(distinct order_id) as orders_hr
-        from {{ source('postgres', 'orders') }}
+        from {{ ref("stg_postgres_orders") }}
         group by date_trunc('hour', created_at) )    -- removes mins and seconds
 )
 
@@ -54,7 +54,7 @@ users_cnt as (
         select 
             count(distinct session_id) as sessions_hour
 
-        from {{ source('postgres', 'events') }}   
+        from {{ ref("stg_postgres_events") }}   
         group by date_trunc('hour', created_at)
     )
 )

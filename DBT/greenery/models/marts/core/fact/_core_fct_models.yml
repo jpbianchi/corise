@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: core_fct_orders
+    description: "Model that pulls useful info on orders"
+    columns:
+      - name: order_id
+        description: "The primary key for this table"
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not null 
+      - name: user_id
+        tests:
+          - not null 

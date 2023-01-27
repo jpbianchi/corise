@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: mkt_fct_user_orders
+    description: "Model that pulls useful info on users' orders for marketing dept"
+    columns:
+      - name: user_id
+        description: "The primary key for this table"
+        tests:
+          - not_null

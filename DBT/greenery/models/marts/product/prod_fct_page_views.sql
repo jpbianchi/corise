@@ -9,15 +9,12 @@
 */
 
 select 
-  date_trunc('day', e.created_at) as day
-  ,product_id
-  ,count(product_id) as nb_page_views_day
+  date_trunc('day', created_at) as day
+  , product_id_viewed
+  , count(product_id_viewed) as nb_page_views_day
 
 
-from {{ ref("stg_postgres_events") }} e
-left join {{ ref("core_fct_orders") }} o
-using (order_id)
-where e.event_type = 'page_view'
+from {{ ref("core_fct_events") }}
+where product_id_viewed is not null
 group by 1, 2
-
-
+order by 1

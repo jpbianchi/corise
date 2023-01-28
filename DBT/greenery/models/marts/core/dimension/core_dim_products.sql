@@ -7,8 +7,9 @@
 
 select 
   product_id
-  ,name       as product_name
+  ,pi.name       as product_name
   ,price      as product_price
+  ,inventory  as produt_inventory
   ,coalesce(promo_id, 'NO PROMO') as promo_description 
 
 from {{ ref("stg_postgres_products") }} pi

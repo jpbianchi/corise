@@ -1,0 +1,17 @@
+version: 2
+
+macros:
+  - name: unique_counts
+    description: "Counts distinct values, omitting nulls"
+
+  - name: unique_events
+    description: "Aggregates event types per session"
+
+  - name: grant 
+    description: "Grant roles"
+
+  - name: positive_values
+    description: "Check if a column value is positive"
+
+  - name: lbs_to_kgs
+    description: "converts pounds to kilograms"

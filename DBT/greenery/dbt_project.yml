@@ -33,6 +33,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   greenery:
+    # post-hook grants access to this role to each model AFTER EACH model that runs
+    +post-hook:
+          - "{{ grant(role='reporting') }}"
+
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view

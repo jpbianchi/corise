@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: int_conv_rate_prod
+    description: "Calculates the conversion rate per product"

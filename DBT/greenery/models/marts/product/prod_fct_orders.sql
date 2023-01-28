@@ -4,6 +4,18 @@
   )
 }}
 
+with orders as (
+  select * from {{ ref("core_fct_orders") }}
+)
+
+, events as (
+  select * from {{ ref("stg_postgres_events") }}
+)
+
+, products as (
+  select * from {{ ref("core_dim_products") }}
+)
+
 /*
   I'm not going to do sthg elaborate here, just the daily orders / product
 */

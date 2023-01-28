@@ -2,3 +2,5 @@
 target/
 dbt_packages/
 logs/
+profiles_copy.yml
+g2_test/

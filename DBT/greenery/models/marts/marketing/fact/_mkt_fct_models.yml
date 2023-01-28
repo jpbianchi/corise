@@ -1,10 +1,87 @@
 version: 2
 
 models:
-  - name: mkt_fct_user_orders
+  - name: mkt_fct_user_order
     description: "Model that pulls useful info on users' orders for marketing dept"
     columns:
       - name: user_id
         description: "The primary key for this table"
         tests:
           - not_null
+
+  - name: project1_metrics
+    description: "Model that calculates the metrics for Project 1"
+    tests:
+      - dbt_expectations.expect_column_values_to_be_in_type_list:
+          column_type_list: [integer, float]
+
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 1  # if > 1, a join has messed things up somewhere
+
+      # I didn't find a way to test all columns at once
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'nb_users'  
+          value_set: [130]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'cnts1'  
+          value_set: [25]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'cnts2'  
+          value_set: [28]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'cnts3'  
+          value_set: [34]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'total_orders'  
+          value_set: [124]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'avg_orders_hr'  
+          value_set: [7.52]
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'avg_delivery_time_hr'  
+          value_set: [93.4]          
+      - dbt_expectations.expect_column_values_to_be_in_set:
+          column_name: 'avg_sessions_hr'  
+          value_set: [16.33]          
+
+    columns:
+      - name: nb_users
+        description: "Total number of users"
+        tests:
+          - accepted_values:
+              values: [130]
+      - name: cnts1
+        description: "Nb of users who placed only one order"
+        tests:
+          - accepted_values:
+              values: [25]
+      - name: cnts2
+        description: "Nb of users who placed 2 orders"
+        tests:
+          - accepted_values:
+              values: [28]
+      - name: cnts3
+        description: "Nb of users who placed 3 orders"
+        tests:
+          - accepted_values:
+              values: [34]
+      - name: total_orders
+        description: "Total nb of orders"
+        tests:
+          - accepted_values:
+              values: [124]
+      - name: avg_orders_hr
+        description: "Average nb of orders per hour"
+        tests:
+          - accepted_values:
+              values: [7.52]
+      - name: avg_delivery_time_hr
+        description: "Average delivery time per hour"
+        tests:
+          - accepted_values:
+              values: [93.4]
+      - name: avg_sessions_hr
+        description: "Average nb of sessions per hour"
+        tests:
+          - accepted_values:
+              values: [16.33]

@@ -21,13 +21,13 @@ with orders as (
 */
 
 select 
-  date_trunc('day', e.created_at) as day
-  ,product_id
-  ,count(product_id) as nb_prod_ordered_day
+  date_trunc('day', o.created_at) as day
+  , o.product_id
+  ,count(o.product_id) as nb_prod_ordered_day
 
 
-from {{ ref("stg_postgres_events") }} e
+from {{ ref("core_fct_events") }} e
 left join {{ ref("core_fct_orders") }} o
 using (order_id)
-where e.event_type = 'add_to_cart'
+where e.checkout_cnt > 0 
 group by 1, 2

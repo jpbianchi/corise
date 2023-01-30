@@ -1,0 +1,8 @@
+fastapi
+pydantic
+uvicorn
+loguru
+scikit-learn  # install scipy==1.9.3 beforehand, otherwise it will try 1.10 and it fails
+numpy
+pytest
+# sentence-transformers  # will not work on my computer because of lack of AVX2 support

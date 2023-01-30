@@ -1,5 +1,8 @@
 .idea/
 
+DAGSTER*/
+DAGSTER/
+DBT/
 # Default .gitignore content added by dbt Cloud
 target/
 dbt_packages/

@@ -3,6 +3,9 @@
 ![Final Product funnel](./Product_funnel.png)
 
 
+![Final DAG](./DAG_final.png)
+
+
 ## Orders that changed from week 3 to week 4 
 
 | ORDER_ID                         |
@@ -11,6 +14,9 @@
 | e1b6a667069e246b61e3227bce272976 |
 | 46395cb9dee23797645d39edd8dec75f |
 
+
+
+## Introduction
 ### Using the starter project
 
 Try running the following commands:

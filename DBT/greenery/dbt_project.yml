@@ -38,5 +38,5 @@ models:
           - "{{ grant(role='reporting') }}"
 
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+    # example:
+    #   +materialized: view

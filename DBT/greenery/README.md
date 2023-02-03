@@ -1,4 +1,15 @@
-Welcome to your new dbt project!
+
+
+![Final Product funnel](./Product_funnel.png)
+
+
+## Orders that changed from week 3 to week 4 
+
+| ORDER_ID                         |
+|----------------------------------|
+| e7d90edb80197df686a2075cad581ef2 |
+| e1b6a667069e246b61e3227bce272976 |
+| 46395cb9dee23797645d39edd8dec75f |
 
 ### Using the starter project
 

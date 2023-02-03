@@ -1,0 +1,20 @@
+version: 2
+
+exposures:
+  
+  - name: product_funnel
+    type: dashboard
+    maturity: high
+    # url: https://bi.tool/dashboards/1
+    url: https://app.sigmacomputing.com/corise-dbt/workbook/Greenery-1YEvfE87Rh2iIz0qNzml9G
+    description: >
+      Models that are critical to our product funnel dashboard
+
+    depends_on:
+      - ref('prod_fct_funnel')
+
+      # - source('gsheets', 'goals')
+
+    owner:
+      name: JP Bianchi
+      email: jpbianchi@gmail.com

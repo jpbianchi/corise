@@ -7,3 +7,6 @@ models:
 
   - name: prod_fct_page_views
     description: "Model that gives the nb of page views per product, per day"
+
+  - name: prod_fct_funnel
+    description: "Model to create data for the funnel dashboard on sigmacomputing"

@@ -9,25 +9,22 @@ with orders as (
 )
 
 , events as (
-  select * from {{ ref("stg_postgres_events") }}
-)
-
-, products as (
-  select * from {{ ref("core_dim_products") }}
+  select * from {{ ref("core_fct_events") }}
 )
 
 /*
-  I'm not going to do sthg elaborate here, just the daily orders / product
+  I'm not going to do sthg elaborate here, just the daily orders / product / order
 */
 
 select 
   date_trunc('day', o.created_at) as day
+  , order_id
   , o.product_id
-  ,count(o.product_id) as nb_prod_ordered_day
+  , count(o.product_id) as nb_prod_ordered_day
 
 
-from {{ ref("core_fct_events") }} e
-left join {{ ref("core_fct_orders") }} o
+from events e
+left join orders o
 using (order_id)
-where e.checkout_cnt > 0 
-group by 1, 2
+-- where e.checkout_cnt > 0 -- removed so it works with pro_fct_funnel, but then the merge is useless
+group by 1, 2, 3

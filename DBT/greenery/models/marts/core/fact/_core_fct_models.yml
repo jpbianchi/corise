@@ -29,3 +29,6 @@ models:
         description: "The primary key for this table"
         tests:
           - not_null
+
+  - name: core_fct_events_funnel
+    description: "Model to be used for the product funnel"

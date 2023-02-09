@@ -1,4 +1,4 @@
--- first part
+-- 1st part
 with valid_customers as (
     select
           d.CUSTOMER_ID as id
@@ -45,6 +45,7 @@ with valid_customers as (
           trim(su.SUPPLIER_NAME) as supplier
         , initcap(lower(trim(su.SUPPLIER_CITY))) as city
         , upper(trim(su.SUPPLIER_STATE)) as state
+        , su.SUPPLIER_ID as supplier_id
         , ci.GEO_LOCATION as geolocation
 
     from
@@ -71,7 +72,9 @@ with valid_customers as (
     select
            cu.id                                                                 as id
          , cu.full_name
+         , cu.email_address
          , su.supplier                                                           as closest_supplier
+         , su.supplier_id
          , round(ST_Distance(cu.geolocation, su.geolocation) / 1609,1)           as distance_miles
     from
          valid_customers cu
@@ -81,6 +84,7 @@ with valid_customers as (
     order by 2 asc
 )
 -- select * from closest_supplier limit 25;   -- <<<<< RUN THIS LINE TO GET ANSWER TO QUESTION 1  <<<<<<<<<
+-- select count(*) from closest_supplier;  -- 2401
 -- FULL_NAME,CLOSEST_SUPPLIER,DISTANCE_MILES
 -- Abreu Else,Lazlo and Company,220.5
 -- Ackley Jennifer,Georgia Grocery Company,375.4
@@ -161,7 +165,9 @@ with valid_customers as (
     qualify (row_number() over (partition by id order by food_pref1 asc)) = 1
     order by firstname
 )
-select * from customer_prefs order by firstname limit 20;-- <<<<< RUN THIS LINE TO GET ANSWER TO QUESTION 2  <<<<<<<<<
+-- 2nd part
+select * from customer_prefs order by firstname limit 20;  -- <<<<< RUN THIS LINE TO GET ANSWER TO QUESTION 2  <<<<<<<<<
+-- select count(*) from customer_prefs;
 -- FIRSTNAME,FOOD_PREF1,FOOD_PREF2,FOOD_PREF3,RECIPE
 -- Aaron,beef-liver,healthy-2,oven,easy chicken liver and brandy pate
 -- Aaron,granola-and-porridge,south-african,,hungry girl complete  utter oatmeal insanity

@@ -11,7 +11,7 @@ runtime_version = '3.8'
 handler = 'match'
 as
 $$
-def match(customer_city, customer_state, state, city_names):  # array must be declared as dict ...
+def match(customer_city, customer_state, state, city_names):
     if customer_state != state:
         return False
 
@@ -43,6 +43,7 @@ with active_customers as (  -- renamed s into active_customers
       and trim(state_abbr) = 'IN'
 )
 
+-- We can filter the cities before the join with user data, which will make it much quicker
 , cities as (
     select
         trim(us_cities.state_abbr) as state_abbr
@@ -78,7 +79,7 @@ with active_customers as (  -- renamed s into active_customers
                 and
               trim(lower(cust_addr.customer_city)) = trim(lower(cities.city_name))
 
-         join active_customers as active_cust -- used meaningful CTE name but kept alias
+         inner join active_customers as active_cust -- used meaningful CTE name but kept alias
               on cust_data.customer_id = active_cust.customer_id
 
          cross join chic -- turned the subquery into CTE

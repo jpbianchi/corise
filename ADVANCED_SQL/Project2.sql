@@ -32,15 +32,15 @@ with active_customers as (  -- renamed s into active_customers
     select
         geo_location
     from vk_data.resources.us_cities
-    where trim(city_name) = 'CHICAGO' and trim(state_abbr) = 'IL'  -- better trim all cities, state names
+    where upper(trim(city_name)) = 'CHICAGO' and upper(trim(state_abbr)) = 'IL'  -- better trim all cities, state names
 )
 
 , gary as (
     select
         geo_location
     from vk_data.resources.us_cities
-    where trim(city_name) = 'GARY'
-      and trim(state_abbr) = 'IN'
+    where upper(trim(city_name)) = 'GARY'
+      and upper(trim(state_abbr)) = 'IN'
 )
 
 -- We can filter the cities before the join with user data, which will make it much quicker
@@ -77,7 +77,7 @@ with active_customers as (  -- renamed s into active_customers
            on upper(trim(cust_addr.customer_state)) =
               upper(cities.state_abbr) -- all low caps, trim instead of rtrim(ltrim(
                 and
-              trim(lower(cust_addr.customer_city)) = trim(lower(cities.city_name))
+              lower(trim(cust_addr.customer_city)) = lower(trim(cities.city_name))
 
          inner join active_customers as active_cust -- used meaningful CTE name but kept alias
               on cust_data.customer_id = active_cust.customer_id

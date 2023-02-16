@@ -5,10 +5,28 @@
 -- the ID of the recipe that was most viewed
 --
 -- explain  -- returns statistics about the query - works in Datagrip
---
-with real_activity as (
+-- alter session set use_cached_result = false -- disable cached results
+
+with real_activity1 as (
+    -- let's remove duplicate entries
+    -- group by is faster than distinct
+
     select
-        *
+        EVENT_TIMESTAMP
+        , SESSION_ID
+        , EVENT_DETAILS
+        , true as is_not_a_duplicate_event  -- for code compatibility
+
+    from VK_DATA.EVENTS.WEBSITE_ACTIVITY
+    group by 1,2,3
+)
+
+, real_activity as (
+    -- removing the duplicates this way is MUCH faster than with group by
+    select
+        EVENT_TIMESTAMP
+        , SESSION_ID
+        , EVENT_DETAILS
 
         -- with event data, some events can occur twice, so we need to flag the repeats
         -- before we start counting the nb of searches
@@ -57,7 +75,6 @@ with real_activity as (
     select event_day
          -- we can count the unique sessions without passing session_id to save memory
          , count(*)                      as sessions_day -- nb of rows = nb of unique sessions
-
          , avg(session_length)           as avg_session_length
          , avg(search_rows)              as avg_searches_before_recipe_view
 
@@ -73,8 +90,6 @@ with real_activity as (
 select
     event_day, sessions_day, avg_session_length, avg_searches_before_recipe_view
 
-    -- mode() spreads the value to all rows in the partition, so we'll have
-    -- to pick only one row using qualify
     , mode(rec.value) over (partition by event_day) as most_viewed_recipe
 
 from averages, table(flatten(viewed_recipes)) as rec
@@ -82,29 +97,3 @@ qualify row_number() over (partition by event_day order by rec.value) = 1
 
 order by event_day;
 
-/*
-QUERY PROFILE ANALYSIS:
-From the query profile, we can see that 47% of the time was spent on finding the min and max EVENT_TIMESTAMP
-for the session times.
-The successive window function takes ~ 0%: that's probably because they operate on the same partition,
-ordered in the same way, so I guess Snowflake saw that and reused the partition.
-
-The join with the RECIPE table to transform the recipe_ids into recipe names is unavoidable, and takes 23%,
-so I should have done it in the end, when we have the most viewed recipes and a smaller table.
-I will fix that for next time, when we have a much bigger table to process.
-
-The 3rd most expensive query is the sorting by the date, so, for the same reason, I did it in the end.
-
-CODE STRUCTURE:
-I started by removing the duplicate events to decrease the size of the table right off the bat.
-Also, in the CTE's, I collapse the partition results using 'qualify' rather than
-passing row_numbers to the next query which then does 'where row = 1',
-in order to avoid passing a lot of data that will be discarded.
-Although, I guess a good compiler could do that on its own, not sure.
-
-Finally, I did all the partition calculations in one CTE, in order to allow Snowflake to re-use
-the same partition.  We saw above that the first window function took 47% of the time,
-and the next one almost zero, so I guess it was a good design choice, over creating
-several CTE's for clarity (although, again, not sure how smart their compiler is).
-
-*/

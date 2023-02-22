@@ -82,6 +82,9 @@ with real_activity1 as (
          -- that we will convert into a column and use mode() to find the most frequent value
          , STRTOK_TO_ARRAY(listagg(recipes_session,'|~|'),'|~|') as viewed_recipes
 
+    ### SINCE WE GROUP BY DAY HERE, WHY NOT CALCULATE THE MOST VIEWED RECIPE HERE?
+    ### A GUY USED mode(regexp_substr(event_details, '[[:alnum:]]{8}-[[:alnum:]]{4}-[[:alnum:]]{4}-[[:alnum:]]{4}-[[:alnum:]]{12}')) as most_viewed_recipe
+
     from daily_values
     group by event_day
 )

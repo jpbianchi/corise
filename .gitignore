@@ -2,6 +2,7 @@
 .DS_Store
 DAGSTER*/
 DAGSTER/
+ADVANCED_SQL/
 greenery/
 DBT/
 # Default .gitignore content added by dbt Cloud
@@ -15,7 +16,8 @@ logs/
 MLOPS/
 
 dcdl*/
-DATA_CENTRIC_DL/
+DATA_CENTRIC_DL2/
+NOTEBOOKS/
 DATA_CENTRIC_DL.pdf
 dcdl_project1_x*
 

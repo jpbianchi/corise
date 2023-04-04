@@ -1,10 +1,19 @@
+
+greenery_fresh/
+# csv backup of my schema on snowflake
+JPB_schema_backup/
+# csv backup of snowflake data
+RAW_backup/
+# oleg's repo
+/oleg-agapov-course-dbt/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
 
-greenery_fresh/
 
 # C extensions
 *.so

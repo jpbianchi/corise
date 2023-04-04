@@ -12,7 +12,6 @@ with events as (
 , order_products as (
     select *
     from {{ ref("prod_fct_orders") }}
-    -- I cannot use prod_fct_orders
 )
 , session_dates as (
     select 

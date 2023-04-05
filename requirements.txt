@@ -15,7 +15,7 @@ pytest==7.1.2
 pytorch-lightning==1.6.3
 scikit-image==0.19.2
 scikit-learn==1.0.2
-scipy==1.8.0
+scipy==1.10.1  # was 1.8.0 but having issues
 transformers==4.18.0
 torch==1.11.0
 torchmetrics==0.8.1

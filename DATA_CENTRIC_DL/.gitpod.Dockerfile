@@ -24,7 +24,8 @@ RUN pip3 install \
     pytorch-lightning==1.6.3 \
     scikit-image==0.19.2 \
     scikit-learn==1.0.2 \
-    scipy==1.8.0 \
+    # was scipy==1.8.0 but having issues
+    scipy==1.10.1   \
     torch==1.11.0 \
     torchmetrics==0.8.1 \
     torchvision==0.12.0 \

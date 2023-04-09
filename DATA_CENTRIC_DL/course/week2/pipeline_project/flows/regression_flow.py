@@ -146,3 +146,5 @@ if __name__ == "__main__":
   flow = DigitClassifierFlow()
   
   # {'acc': 0.9799998998641968, 'loss': 0.10840149223804474}
+  # impressive improvement since MLP solved 98% of the cases, which were
+  # errors from the linear model

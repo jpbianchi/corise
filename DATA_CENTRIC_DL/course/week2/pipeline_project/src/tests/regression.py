@@ -178,3 +178,7 @@ if __name__ == "__main__":
   torch.save({'images': images, 'labels': labels}, save_path)
 
   print(f'Saved to {save_path}.')
+  
+  # run python src/tests/regression.py "artifacts/ckpts/regression_flow/epoch=5-step=9000.ckpt"
+  # Saved to src/tests/images/regression/test-data.pt
+  

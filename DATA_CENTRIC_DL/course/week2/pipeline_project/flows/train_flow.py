@@ -17,6 +17,7 @@ from metaflow import FlowSpec, step, Parameter
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 
+# make sure to run 'source init_env.sh' otherwise it won't find the 'src' module
 from src.system import MNISTDataModule, DigitClassifierSystem
 from src.utils import load_config, to_json
 
@@ -132,3 +133,8 @@ if __name__ == "__main__":
   You can specify a run id as well.
   """
   flow = DigitClassifierFlow()
+  
+# 2023-04-09 13:47:30.331 Restoring states from the checkpoint path at /workspace/corise/DATA_CENTRIC_DL/course/week2/pipeline_project/artifacts/ckpts/train_flow/epoch=2-step=4500.ckpt
+# 2023-04-09 13:47:30.340 Loaded model weights from checkpoint at /workspace/corise/DATA_CENTRIC_DL/course/week2/pipeline_project/artifacts/ckpts/train_flow/epoch=2-step=4500.ckpt
+# 2023-04-09 13:47:32.989 {'acc': 0.925818681716919, 'loss': 0.27235570549964905}
+# 2023-04-09 13:47:38.061 Task finished successfully.

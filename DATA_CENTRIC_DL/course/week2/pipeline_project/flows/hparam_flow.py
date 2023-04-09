@@ -46,6 +46,9 @@ class DigitClassifierFlow(FlowSpec):
 
     # for each width, we will train a model
     self.next(self.init_and_train, foreach='widths')
+    # we can nest foreach loops see
+    # https://docs.metaflow.org/v/r/metaflow/basics
+
 
   @step
   def init_and_train(self):
@@ -64,7 +67,7 @@ class DigitClassifierFlow(FlowSpec):
     checkpoint_callback = ModelCheckpoint(
       dirpath = os.path.join(config.system.save_dir, f'width{self.input}'),
       monitor = 'dev_loss',
-      mode = 'min',
+      mode = 'min', 
       save_top_k = 1,
       verbose = True,
     )
@@ -107,7 +110,8 @@ class DigitClassifierFlow(FlowSpec):
     # Pseudocode:
     # --
     # aggregate scores using `inputs`
-    # best_index = ...
+    scores = [inp.callback.best_model_score for inp in inputs]
+    best_index = np.argmin(scores)
     #
     # Type:
     # --
@@ -175,3 +179,6 @@ if __name__ == "__main__":
   You can specify a run id as well.
   """
   flow = DigitClassifierFlow()
+  
+# 2023-04-09 15:15:47.882 Loaded model weights from checkpoint at /workspace/corise/DATA_CENTRIC_DL/course/week2/pipeline_project/artifacts/ckpts/hparam_flow/width64/epoch=4-step=7500.ckpt
+# 2023-04-09 15:15:50.979 {'acc': 0.9674520492553711, 'best_width': 64, 'loss': 0.11814860999584198}

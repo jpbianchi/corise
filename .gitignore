@@ -11,6 +11,8 @@ dbt_packages/
 logs/
 *.mp4
 *workspace
+
+.metaflow/
 # end dbt Cloud content
 
 MLOPS/

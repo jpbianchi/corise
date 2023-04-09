@@ -92,6 +92,8 @@ def build_regression_test(system, loader):
     # -- 
     # batch_loss = ...
     # convert batch_loss to list of floats
+    batch_is_correct = torch.eq(labels, preds).tolist()
+    batch_loss = F.cross_entropy(logits, labels, reduction='none')
     # 
     # Type:
     # --

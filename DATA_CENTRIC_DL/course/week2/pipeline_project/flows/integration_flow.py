@@ -144,3 +144,5 @@ if __name__ == "__main__":
   You can specify a run id as well.
   """
   flow = DigitClassifierFlow()
+  
+  # {'acc': 0.9242212176322937, 'loss': 0.2782450318336487}

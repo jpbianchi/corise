@@ -56,13 +56,16 @@ class MNISTIntegrationTest(BaseTest):
     #
     # Pseudocode:
     # --
-    # loader = ...
+    # batch_size = config.system.optimizer.batch_size
+    loader = self.get_dataloader()
+    
     # pass loader to trainer and call test
+    trainer.test(system, dataloaders=loader)
     #
     # Notes:
     # --
     # Nothing to return here
-    pass  # remove me
+    # pass  # remove me
     # ================================
 
 

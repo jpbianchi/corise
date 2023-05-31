@@ -164,53 +164,14 @@ def main():
 if __name__ == '__main__':
     main()
 
-# PYTHONPATH=../ pytest test.py -s  # -s to get prints
-# test.py [{'description': 'sample',
-#   'end_time': '2023-05-17 19:16:00',
-#   'file_name': 'sample_1.csv',
-#   'file_path': '/usr/sample_1.csv',
-#   'percentage': None,
-#   'process_id': '07af0de8-03d0-459b-86cd-7123c84f7f8d',
-#   'start_time': '2023-05-17 19:15:55',
-#   'time_taken': 5.0},
-#  {'description': 'sample',
-#   'end_time': '2023-05-17 19:16:00',
-#   'file_name': 'sample_2.csv',
-#   'file_path': '/usr/sample_2.csv',
-#   'percentage': None,
-#   'process_id': '72d1db75-5d86-436f-a964-6568262f7fe6',
-#   'start_time': '2023-05-17 19:15:55',
-#   'time_taken': 5.0},
-#  {'description': 'sample',
-#   'end_time': '2023-05-17 19:16:00',
-#   'file_name': 'sample_3.csv',
-#   'file_path': '/usr/sample_3.csv',
-#   'percentage': None,
-#   'process_id': '9418daff-71d1-4ab3-b1dd-706125111c11',
-#   'start_time': '2023-05-17 19:15:55',
-#   'time_taken': 5.0},
-#  {'description': 'sample',
-#   'end_time': '2023-05-30 22:28:37',
-#   'file_name': 'sample_1.csv',
-#   'file_path': '/usr/sample_1.csv',
-#   'percentage': None,
-#   'process_id': '3fc278b8-9fa9-4604-bf5f-93a2817ef6cc',
-#   'start_time': '2023-05-30 22:28:32',
-#   'time_taken': 5.0},
-#  {'description': 'sample',
-#   'end_time': '2023-05-30 22:28:37',
-#   'file_name': 'sample_2.csv',
-#   'file_path': '/usr/sample_2.csv',
-#   'percentage': None,
-#   'process_id': '42515e38-ac6d-4fde-ae40-04acff3642dd',
-#   'start_time': '2023-05-30 22:28:32',
-#   'time_taken': 5.0},
-#  {'description': 'sample',
-#   'end_time': '2023-05-30 22:28:37',
-#   'file_name': 'sample_3.csv',
-#   'file_path': '/usr/sample_3.csv',
-#   'percentage': None,
-#   'process_id': '95cf71cb-d9ec-484f-a0f3-15f8645b0cae',
-#   'start_time': '2023-05-30 22:28:32',
-#   'time_taken': 5.0}]
+# PYTHONPATH=../ python main.py --type tst  # or sml or bg
+# 2023-05-31 16:05:08,231 - main_logs - INFO Inside `get_sales_information` method
+# 2023-05-31 16:05:08,706 - main_logs - INFO Inside `describe` method
+# 2023-05-31 16:05:09,680 - main_logs - INFO Inside `aggregate` method
+# 2023-05-31 16:05:10,168 - main_logs - INFO Inside `revenue_per_region` method
+# 2023-05-31 16:05:10,680 - main_logs - INFO Inside `get_sales_information` method
 # ...
+
+# PYTHONPATH=../ pytest test.py -s  # -s to get prints
+# 2023-05-31 00:42:02,003 - server_logs - INFO `/health` API called
+# 2023-05-31 00:42:02,013 - server_logs - INFO `/processes` API called

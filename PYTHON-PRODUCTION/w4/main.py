@@ -164,6 +164,14 @@ def main():
 if __name__ == '__main__':
     main()
 
+# PYTHONPATH=../ python main.py --type tst  # or sml or bg
+# 2023-05-31 16:05:08,231 - main_logs - INFO Inside `get_sales_information` method
+# 2023-05-31 16:05:08,706 - main_logs - INFO Inside `describe` method
+# 2023-05-31 16:05:09,680 - main_logs - INFO Inside `aggregate` method
+# 2023-05-31 16:05:10,168 - main_logs - INFO Inside `revenue_per_region` method
+# 2023-05-31 16:05:10,680 - main_logs - INFO Inside `get_sales_information` method
+# ...
+
 # PYTHONPATH=../ pytest test.py -s  # -s to get prints
 # test.py [{'description': 'sample',
 #   'end_time': '2023-05-17 19:16:00',

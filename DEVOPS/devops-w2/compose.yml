@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  web1:
+    build: ./quote_gen
+    #container_name: gen # removed because of 2 replicas (using same name)
+    ports:
+      - "5000:5000"
+    deploy:
+      mode: replicated
+      replicas: 2
+  web2:
+    build: ./quote_disp
+    #container_name: disp
+    expose:
+      - "5000"
+    ports:
+      - "5001:5000"
+    depends_on:
+      - web1
+    deploy:
+      mode: replicated
+      replicas: 2
+
+# one could have also used: docker-compose up -d --scale web1=2 --scale web2=2 (overrides this file)
